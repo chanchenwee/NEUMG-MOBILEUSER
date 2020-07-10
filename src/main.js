@@ -11,6 +11,8 @@ import {Lazyload} from 'vant'
 import 'vant/lib/index.css'
 import 'element-ui/lib/theme-chalk/index.css'
 
+
+
 Vue.use(Lazyload);
 Vue.use(Vant);
 axios.defaults.withCredentials = true;

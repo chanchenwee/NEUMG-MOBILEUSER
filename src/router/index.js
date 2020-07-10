@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../components/index/Home.vue'
 import Login from '../Login.vue'
 import Index from '../views/Index.vue'
+import Mine from '../components/mine/Mine.vue'
 Vue.use(VueRouter)
 
   const routes = [
@@ -15,6 +16,11 @@ Vue.use(VueRouter)
 			  path: '/home',
 			  name: 'Home',
 			  component: Home
+		  },
+		  {
+			  path: '/mine',
+			  name: 'Mine',
+			  component: Mine
 		  }
 	  ],
 	  redirect: '/home',

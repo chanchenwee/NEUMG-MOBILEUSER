@@ -5,6 +5,7 @@
 </template>
 
 <style lang="less" scoped>
+	
 #app {
   height: calc(100vh);
   width: 100%;
@@ -13,5 +14,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+ 
 }
 </style>
