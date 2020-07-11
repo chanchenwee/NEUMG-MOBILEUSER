@@ -1,20 +1,22 @@
 <template>
 	<div>
     <div class="user-box">
-<van-pull-refresh v-model="refreshing" @refresh="onRefresh">
+	<van-pull-refresh v-model="refreshing" @refresh="onRefresh">
         <section class="user-page">
             <div class="user-info">
                 <div class="info">
                     <img src="//img11.360buyimg.com/jdphoto/s120x122_jfs/t5683/191/7076936752/5123/834e5571/596dd62bN7a8affc5.png"/>
                     <div>
+						
                         <p>{{userInfo.username}}</p>
-                        <span class="name">用户名{{userInfo.username}}</span>
+                        <span  v-if=false  class="name">用户名{{userInfo.username}}</span>
+						<span class="name" @click="tologin()">点击登录</span>
 						<van-tag round type="danger">钻石vip</van-tag>
                     </div>
-                    <router-link to="./profile" class="account-management">
+                    <router-link to="./setting" class="account-management">
                        <van-icon class="kefu" name="service" />
                     </router-link>
-					<router-link to="./profile" class="account-management1">
+					<router-link to="./setting" class="account-management1">
 					    <i class="iconfont icon-shezhi"></i>
 					</router-link>
 
@@ -64,25 +66,11 @@
 
 			</div>
 			
-<van-notice-bar
-  left-icon="volume-o"
-  text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
-/>
-		    <img class="eventimg" src="../../../public/imgs/swipe/slide-1.jpg" />
-
-
-			
-			
-			
+<van-notice-bar left-icon="volume-o"text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"/>
+		    <img class="eventimg" src="../../../public/imgs/swipe/slide-1.jpg" />	
 			
             <loading v-show="isLoading"></loading>
             <div v-show="!isLoading">
-
-
-
-
-
-
                 <p class="recommend-title">为你推荐</p>
                 <div class="recommend-list">
                     <div class="recommend-item" v-for="(item,index) in recommendList" @click="productDetail(index)">
@@ -145,9 +133,6 @@
             })
         },
         methods: {
-            // ...mapMutations([
-            //     'RECORE_FOOT'
-            // ]),
             getRecommendList() {
                 let params = {
                     keyword: '1',
@@ -187,7 +172,13 @@
 			      this.loading = true;
 			      this.onLoad();
 			    },
+				//跳转到登录页面
+				tologin(){
+					this.$router.push("/login");
+				},
         },
+
+		
         components: {
             // navBar,
             loading
