@@ -153,6 +153,7 @@
 		height: 100%;
 		width: 100%;
 		background-color: #F2F3F5;
+		text-align: center;
 	}
 	.NavSearch{
 		height: fit-content;

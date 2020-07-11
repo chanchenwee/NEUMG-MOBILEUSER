@@ -38,7 +38,7 @@
                 </router-link>
                 <router-link tag="div" to="./order-list?orderType=1" class="menu-item">
                    <van-icon class="icons"name="coupon-o" />
-                    <span>红包卡券</span>
+                    <span>红包</span>
                 </router-link>
             </div>
 			
@@ -65,8 +65,23 @@
 			    </router-link>
 
 			</div>
+			<van-cell style="margin-top: 0.5rem" title="我的优惠卷" is-link value="进入我的优惠卷" />
+			<div class="user-forks">
 			
-<van-notice-bar left-icon="volume-o"text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"/>
+			    <div  class="fork-items">
+			        <i>{{followCount}}</i>
+			        <span>可使用</span>
+			    </div>
+			    <div class="fork-items">
+			        <i>0</i>
+			        <span>已使用</span>
+			    </div>
+			    <div class="fork-items">
+			        <i>{{footCount}}</i>
+			        <span>已过期</span>
+			    </div>
+			</div>
+		<van-notice-bar left-icon="volume-o"text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"/>
 		    <img class="eventimg" src="../../../public/imgs/swipe/slide-1.jpg" />	
 			
             <loading v-show="isLoading"></loading>
@@ -95,7 +110,7 @@
         data() {
             return {
                 userInfo: {},
-                recommendList: [1,2,3,4,5,6,7,8],
+                recommendList: [1,2,3,4],
                 followCount: 0,
                 footCount: 0,
                 isLoading: true,
@@ -332,11 +347,11 @@
 	      display: flex;
 	      justify-content: space-around;
 	      width: 100%;
-	      height: 5.5rem;
+	      height: 5rem;
 		  background: #fff;
-		  margin-top: 1rem;
-		  margin-bottom: 0rem;
-		 
+		  margin-top: 0.6rem;
+		  padding-top: 1rem;
+		
 	      .menu-item {
 	          display: flex;
 	          flex-direction: column;
@@ -386,6 +401,26 @@
               }
           }
       }
+	  .user-forks {
+	       //margin: 0.5rem 0;
+		   margin-bottom: 0.5rem;
+		   background: #fff;
+	      @extend .user-menu;
+	      .fork-items {
+	          display: flex;
+	          flex-direction: column;
+	          flex: 1;
+	          height: 2rem;
+	          margin: 0.2rem 0;
+	          text-align: center;
+	          i {
+	              font-style: normal;
+	              font-weight: bold;
+	              padding: 2px 0;
+	              font-size: 28px;
+	          }
+	      }
+	  }
       .recommend-title {
           width: 100%;
           height: 2rem;
