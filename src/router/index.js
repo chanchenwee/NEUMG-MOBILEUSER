@@ -9,6 +9,10 @@ import Setting from '../components/setting/Setting.vue'
 import Updateinfo from '../components/update-info/Updateinfo.vue'
 import Updatepassword from '../components/update-password/Updatepassword.vue'
 import UpdateAddress from '../components/updateaddress/UpdateAddress.vue'
+import MyCoupon from '../components/coupon/MyCoupon.vue'
+import CouponCenter from '../components/coupon/CouponCenter.vue'
+import RedPacketCenter from '../components/coupon/RedPacketCenter.vue'
+
 Vue.use(VueRouter)
 
   const routes = [
@@ -59,7 +63,23 @@ Vue.use(VueRouter)
   	  path: '/updateaddress',
   	  name: 'UpdateAddress',
   	  component: UpdateAddress
-  }
+  },
+  {
+  	  path: '/myCoupon',
+  	  name: 'MyCoupon',
+  	  component: MyCoupon
+  },
+  {
+  	  path: '/couponCenter',
+  	  name: 'CouponCenter',
+  	  component: CouponCenter
+  },
+  {
+  	  path: '/redpacketCenter',
+  	  name: 'RedPacketCenter',
+  	  component: RedPacketCenter
+  },
+
 ]
 
 const router = new VueRouter({

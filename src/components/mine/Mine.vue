@@ -36,7 +36,7 @@
                    <van-icon class="icons" name="clock-o" />
                     <span>足迹</span>
                 </router-link>
-                <router-link tag="div" to="./order-list?orderType=1" class="menu-item">
+                <router-link tag="div" to="./redpacketCenter" class="menu-item">
                    <van-icon class="icons"name="coupon-o" />
                     <span>红包</span>
                 </router-link>
@@ -63,24 +63,8 @@
 			        <i class="iconfont icon-money"></i>
 			        <span>退款/售后</span>
 			    </router-link>
-
 			</div>
-			<van-cell style="margin-top: 0.5rem" title="我的优惠卷" is-link value="进入我的优惠卷" />
-			<div class="user-forks">
-			
-			    <div  class="fork-items">
-			        <i>{{followCount}}</i>
-			        <span>可使用</span>
-			    </div>
-			    <div class="fork-items">
-			        <i>0</i>
-			        <span>已使用</span>
-			    </div>
-			    <div class="fork-items">
-			        <i>{{footCount}}</i>
-			        <span>已过期</span>
-			    </div>
-			</div>
+			<MineCoupon></MineCoupon>
 		<van-notice-bar left-icon="volume-o"text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"/>
 		    <img class="eventimg" src="../../../public/imgs/swipe/slide-1.jpg" />	
 			
@@ -105,7 +89,7 @@
 
 <script>
     import loading from '../../components/common/loading'
-
+	import MineCoupon from './MineCoupon.vue'
     export default {
         data() {
             return {
@@ -196,7 +180,8 @@
 		
         components: {
             // navBar,
-            loading
+            loading,
+			MineCoupon
         }
     }
 </script>
@@ -288,8 +273,6 @@
 				  font-size: 19px;
 				  font-weight: bold;
 			  }
-	
-
 			    
           }
       }
