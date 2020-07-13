@@ -42,16 +42,17 @@
 						   </div>
 		
 	</template>
-	<div class="fixed_btm"><div class="fixed_btm_item">
+	<div class="fixed_btm">
+	<div class="fixed_btm_item">
 	<div class="fixed_btm_item_icon icon_get"></div>
 	 <div class="fixed_btm_item_text" @click="toCouponCenter">领优惠券</div>
 	 </div> 
 	 <div class="fixed_btm_item">
-		 <div class="fixed_btm_item_icon icon_my">
-			 
+		 <div class="fixed_btm_item_icon icon_my">		 
 		 </div> 
 		 <div class="fixed_btm_item_text cur" @click="toMycoupon">我的优惠券</div>
 		 </div>
+		 
 		 </div>
 	</div>
 </template>
@@ -73,11 +74,11 @@
 	      this.$router.go("-1");
 	    },
 		toCouponCenter(){
-			this.$router.push("/couponCenter");
+			this.$router.push("coupon/couponcenter");
 		},
 		
 		toMycoupon(){
-			this.$router.push("/myCoupon")
+			this.$router.push("coupon/mycoupon")
 		}
 	  },
 	};

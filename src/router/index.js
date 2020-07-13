@@ -13,6 +13,7 @@ import MyCoupon from '../components/coupon/MyCoupon.vue'
 import CouponCenter from '../components/coupon/CouponCenter.vue'
 import VIPCenter from '../components/coupon/VIPCenter.vue'
 import RedPacket from '../components/coupon/RedPacket.vue'
+import BottomBar from '../components/coupon/BottomBar.vue'
 
 Vue.use(VueRouter)
 
@@ -66,19 +67,25 @@ Vue.use(VueRouter)
   	  component: UpdateAddress
   },
   {
-  	  path: '/myCoupon',
-  	  name: 'MyCoupon',
-  	  component: MyCoupon
-  },
-  {
-  	  path: '/couponCenter',
-  	  name: 'CouponCenter',
-  	  component: CouponCenter
-  },
-  {
-  	  path: '/VIPCenter',
-  	  name: 'VIPCenter',
-  	  component: VIPCenter
+  	  path: '/coupon',
+  	  name: 'BottomBar',
+  	  component: BottomBar,
+	  children:[
+	    {path: '/coupon/mycoupon',
+	    name: 'MyCoupon',
+	    component: MyCoupon,
+		},
+	    {path: '/coupon/couponcenter',
+	    name: 'CouponCenter',
+	    component: CouponCenter,
+		},
+	    {path: '/coupon/vipcenter',
+	    name: 'VIPCenter',
+	    component: VIPCenter,
+		},	  
+	  
+	  ],
+	  redirect: '/coupon/mycoupon',
   },
   {
   	  path: '/redPacket',

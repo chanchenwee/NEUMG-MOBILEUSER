@@ -88,7 +88,19 @@
 	  </van-grid-item>
 	</van-grid>
 	</div>
-	<van-button type="warning" style="width: 90%; margin-left: 1rem;" round size="large">点我认证会员</van-button>
+	<div  class="cell"   style="background-color: #fff">
+			<van-button type="warning" style="width: 90%; margin-left: 1rem;" round size="large">点我认证会员</van-button>
+	</div>
+
+		
+		<!-- <van-tabbar v-model="active">
+		<van-tabbar-item icon="coupon-o"@click="toCouponCenter">领券</van-tabbar-item>
+		  <van-tabbar-item icon="balance-o"@click="toVipCenter">领红包</van-tabbar-item>
+		  <van-tabbar-item icon="user-o" @click="toMycoupon">我的优惠卷</van-tabbar-item>
+		</van-tabbar> -->
+
+
+
 </div>
 </template>
 
@@ -99,8 +111,12 @@
 
 		 data() {
 		    return {
-			
-				recommendList:[1,2,3,4]
+			    active: 0,
+				recommendList:[1,2,3,4],
+				icon: {
+				  active: 'https://img.yzcdn.cn/vant/user-active.png',
+				  inactive: 'https://img.yzcdn.cn/vant/user-inactive.png',
+				},
 				
 			};
 			
@@ -115,6 +131,17 @@
 		},
 		showPopup(){
 			
+		},
+		//点击我的优惠卷
+		toMycoupon(){
+			this.$router.push("/myCoupon")
+		},
+		//点击领红包
+		toVipCenter(){
+			this.$router.push("/VIPCenter")
+		},
+		toCouponCenter(){
+			this.$router.push("/CouponCenter")
 		},
 	  },
 	};

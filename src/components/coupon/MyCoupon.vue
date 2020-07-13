@@ -8,7 +8,7 @@
 		  </template>
 		</van-nav-bar>
 	
-		 <van-coupon-list
+<!-- 		 <van-coupon-list
 		   :disabled-title="outdate"
 			:show-exchange-bar="flag"
 			:close-button-text="buttext"
@@ -16,22 +16,55 @@
 			 :disabled-coupons="disabledCoupons"
 		    @change="toCouponCenter"
 		    @exchange="toCouponCenter"
-		  />
-		
-		
-		
-
-		
-		
-		
-		
-		
-		
-		
-		
+		  /> -->	
+		  
+		  <div class="coupon_nav_h5" style="top: 0px;">
+			  <div data-v-5e4f42cc="" class="coupon_navbar">
+				  <div data-v-5e4f42cc="" data-index="0" class="coupon_navbar_tab">
+					  <div data-v-5e4f42cc="" class="coupon_navbar_text cur">
+						  <span data-v-5e4f42cc="">待使用</span> 
+						  <span data-v-5e4f42cc="" class="num">4</span>
+						  </div></div><!---->
+						  <div data-v-5e4f42cc="" data-index="2" class="coupon_navbar_tab">
+							  <div data-v-5e4f42cc="" class="coupon_navbar_text">
+								  <span data-v-5e4f42cc="">已使用</span> <!----></div>
+								  </div>
+								  <div data-v-5e4f42cc="" data-index="3" class="coupon_navbar_tab">
+									  <div data-v-5e4f42cc="" class="coupon_navbar_text">
+										  <span data-v-5e4f42cc="">已过期</span> 
+										  <span data-v-5e4f42cc="" class="num">6</span>
+										  </div></div>
+										  </div> 
+										 </div>
+		  
+		  <van-dropdown-menu  active-color="#ee0a24">
+		    <van-dropdown-item v-model="value1" :options="option1" />
+		    <van-dropdown-item v-model="value2" :options="option2" />
+		  </van-dropdown-menu>
+		  
+		  
+		  
+		  
+		  <div class="coupons">
+		  	<template v-for="i in coupons">
+		  	<div class="van-coupon">
+		  	<div class="van-coupon__content">
+		  	<div class="van-coupon__head">
+		  		<h2 class="van-coupon__amount">1.5<span>元</span></h2><p class="van-coupon__condition">无使用门槛
+		  	</p></div>
+		  	<div class="van-coupon__body"><p class="van-coupon__name">优惠券名称</p><p class="van-coupon__valid">2017.03.10-2017.12.30</p>
+		  	<div role="checkbox" tabindex="0" aria-checked="false" class="van-checkbox van-coupon__corner" size="18">
+		  	<van-button  type="danger" round class="but">使用</van-button>
+		  	</div></div></div><p class="van-coupon__description">描述信息</p>
+		  	</div>
+		  	</template>	
+		  	</div>
+		  
+		  
+		  
 		
 <van-popup v-model="show"position="top" :style="{ height: '45%' }">
-	<van-nav-bar title="优惠卷" left-arrow  @click-left="onClickruleLeft" >
+	<van-nav-bar  class="couponhead"title="优惠卷" left-arrow  @click-left="onClickruleLeft" >
 	 
 	</van-nav-bar>
      <el-collapse style="margin-left: 15px;">
@@ -87,6 +120,23 @@
 			  outdate:"已过期",
 			  buttext:"领更多好卷",
 			   show: false,
+			   
+			    value1: 0,
+			         value2: 'a',
+			         option1: [
+			           { text: '状态', value: 0 },
+			           { text: '新到账', value: 1 },
+			           { text: '快过期', value: 2 },
+			         ],
+			         option2: [
+			           { text: '优惠力度', value: 'a' },
+			           { text: '从高到低', value: 'b' },
+			           { text: '从低到高', value: 'c' },
+			         ],
+			   
+			   
+			   
+			   
 		    };
 		  },
 		
@@ -97,7 +147,7 @@
 		
 		//点击领取更多好卷
 		toCouponCenter(index) {
-			this.$router.push("/couponCenter");
+			this.$router.push("/coupon/couponcenter");
 		},
 		
 		onExchange(code) {
@@ -118,7 +168,7 @@
 </script>
 
 <style scoped>
-
+@import url("../../common/style/mycoupon.css");
 .couponhead{
 	font-family: "bodoni mt black";
 	background: linear-gradient(90deg, #eb3c3c, #ff7459);
@@ -136,7 +186,17 @@
 	/deep/.van-nav-bar .van-icon {	
 		color: #F2F3F5;
 		}
+.but{
+		
+		
+		max-height:2rem ;
+		max-width: 4.6rem;
+		font-size: 13px;
+		font-family: "华文新宋";
+		text-align: center;
 
+	}
+	
 
 
 </style>

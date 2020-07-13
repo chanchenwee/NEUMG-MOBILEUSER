@@ -1,9 +1,7 @@
 <template>
 	<div class="navBottom">
 		<van-tabbar v-model="active" active-color="#ff0101">
-		  <van-tabbar-item replace to="/home">
-			
-			
+		  <van-tabbar-item replace to="/home">			
 			<template class="homeIconArea" #icon="props">
 			  <van-icon v-if="!props.active" name="wap-home-o"/>
 			  <span style="font-size: 12px;" v-if="!props.active">首页</span>

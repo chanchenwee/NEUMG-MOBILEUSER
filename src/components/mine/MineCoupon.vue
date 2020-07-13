@@ -32,7 +32,7 @@ export default {
   methods: {
     //跳转到我的优惠卷
 	toMycoupon(){
-		this.$router.push("/myCoupon");
+		this.$router.push("/coupon");
 	},
   },
 };

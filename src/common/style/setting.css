@@ -1,0 +1,162 @@
+.account_section_v2 {
+    background: #fff;
+    position: relative;
+    padding: 12px 10px 0;
+    margin-bottom: 15px;
+    border-radius: 0 0 10px 10px;
+}
+.account_section_v2 .account_section_title {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.account_section_v2 .account_list {
+    list-style: none;
+    position: relative;
+    margin: 0;
+    padding: 2px 0 15px;
+}
+.account_section_v2 .account_list .account_itemv2.current_account {
+    background: #fff9f9;
+    height: 90px;
+    padding: 20px 15px 15px;
+    border: 1px solid #ff414e;
+}
+.account_section_v2 .account_list .account_itemv2 {
+    position: relative;
+    border-radius: 10px;
+    height: 98px;
+    background: #f8f8f8;
+    margin-top: 10px;
+    padding: 15px 15px 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-size: 12px;
+}
+.account_section_v2 .account_list li {
+    color: #999;
+    line-height: 1.8em;
+}
+li, ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.account_section_v2 .account_list .account_itemv2.current_account .bottom_left_decoration_points {
+    position: absolute;
+    bottom: 0;
+    left: 4px;
+    width: 25px;
+    height: 15px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAbAgMAAABD8jTcAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAJUExURf/AwEdwTP+8vHLlKlcAAAADdFJOU0cAFwxw2lwAAAA2SURBVBjTY2gKDeMEoQjV0AgFBobQEEYQCmANDWBA46GqDEUCAXTgIdkOcgzCZRg8VJWD1mUA6xFnhdDy+GsAAAAASUVORK5CYII=);
+    background-size: 25px 15px;
+}
+.account_section_v2 .account_list .account_itemv2.current_account .top_right_decoration_points {
+    position: absolute;
+    bottom: 14px;
+    right: 45px;
+    width: 27px;
+    height: 22px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAArBAMAAAAu4Q2VAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAVUExURUdwTP/AwP/Bwf/Cwv/Dw//AwP/BwWJVDAsAAAAHdFJOUwBMJQ0ZMj1wWth5AAAA0UlEQVQ4y+WUPQ+CMBCGLwV2ryIzSGSuRJlR4w7BOIsf//8vyL3SlAV0lhue0Ltemjy0R4WmLoqVkNpKWD+EKjLUspEsl7JmDWLnlm/ESLccdwyQVhxJ8cALSvCVoN/jJRjipG6/J409aWcc6USzif1TGICUxY7+y4qvB+L9KfGBE1/3nQY9IcTrT2dFKsWfBelYOnrrv3KrGvCCxQZWz7EtDg1Zt9oWRy/118586sy5hJ86Uo43nZdOn5sJ9mqGP4kfnUOYKHc8J5CumGBZ1dfe/DUg/J1J9I0AAAAASUVORK5CYII=);
+    background-size: 27px 22px;
+}
+.account_section_v2 .account_list .account_itemv2.current_account .top_right_decoration_ring {
+    position: absolute;
+    bottom: 9px;
+    right: 18px;
+    width: 13px;
+    height: 13px;
+    background: transparent;
+    border-radius: 100%;
+    border: 2px solid #ffa9a9;
+    opacity: .2;
+}
+.account_section_v2 .account_list .account_itemv2.current_account .top_right_decoration_circle {
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    bottom: -22px;
+    right: -23px;
+    border-radius: 100%;
+    background-color: #ffa9a9;
+    opacity: .2;
+}
+.account_section_v2 .account_list .account_itemv2.current_account .current_account_tip {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 1px 10px;
+    background-color: #ffe4e4;
+    color: #e2231a;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.account_section_v2 .account_list .account_itemv2 .user_info {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+a, div, header, span {
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+}
+.account_section_v2 .account_list .account_itemv2 .user_info .user_avator-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    vertical-align: middle;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-right: 10px;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+.account_section_v2 .account_list .account_itemv2 .user_info .user_avator-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 100%;
+}
+.account_section_v2 .account_list .account_itemv2 .user_info .user_avator {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%,-50%,0);
+    width: 100%;
+    height: auto;
+}
+img {
+    border: 0;
+    vertical-align: top;
+}
+img {
+    border: 0 none;
+    vertical-align: top;
+}
+a, div, header, span {
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+}
+.account_section_v2 .account_list .account_itemv2 .user_info .user_detail .main_detail {
+    padding: 4px 0 1px;
+    margin-bottom: 1px;
+}
+.account_section_v2 .account_list .account_itemv2 .user_info .user_detail .user_name {
+    color: #333;
+    margin-right: 5px;
+}
+.account_section_v2 .account_list .account_itemv2 .user_info .user_detail .user_pin {
+    color: #333;
+    margin-top: -2px;
+    opacity: .7;
+}
