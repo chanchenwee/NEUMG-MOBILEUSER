@@ -81,7 +81,7 @@
 		 data() {
 		    return {
 		      chosenCoupon: -1,
-		      coupons: [coupon],
+		      coupons: [coupon,coupon,coupon,coupon],
 		      disabledCoupons: [coupon],
 			  flag:false,
 			  outdate:"已过期",

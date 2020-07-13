@@ -78,7 +78,7 @@
 		},
 		//点击领红包
 		toRedPacket(){
-			this.$router.push("/redpacketCenter")
+			this.$router.push("/VIPCenter")
 		},
 
 		

@@ -11,7 +11,8 @@ import Updatepassword from '../components/update-password/Updatepassword.vue'
 import UpdateAddress from '../components/updateaddress/UpdateAddress.vue'
 import MyCoupon from '../components/coupon/MyCoupon.vue'
 import CouponCenter from '../components/coupon/CouponCenter.vue'
-import RedPacketCenter from '../components/coupon/RedPacketCenter.vue'
+import VIPCenter from '../components/coupon/VIPCenter.vue'
+import RedPacket from '../components/coupon/RedPacket.vue'
 
 Vue.use(VueRouter)
 
@@ -75,9 +76,14 @@ Vue.use(VueRouter)
   	  component: CouponCenter
   },
   {
-  	  path: '/redpacketCenter',
-  	  name: 'RedPacketCenter',
-  	  component: RedPacketCenter
+  	  path: '/VIPCenter',
+  	  name: 'VIPCenter',
+  	  component: VIPCenter
+  },
+  {
+  	  path: '/redPacket',
+  	  name: 'RedPacket',
+  	  component: RedPacket
   },
 
 ]

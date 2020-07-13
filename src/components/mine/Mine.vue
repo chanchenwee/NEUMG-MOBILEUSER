@@ -36,7 +36,7 @@
                    <van-icon class="icons" name="clock-o" />
                     <span>足迹</span>
                 </router-link>
-                <router-link tag="div" to="./redpacketCenter" class="menu-item">
+                <router-link tag="div" to="./VIPCenter" class="menu-item">
                    <van-icon class="icons"name="coupon-o" />
                     <span>红包</span>
                 </router-link>
