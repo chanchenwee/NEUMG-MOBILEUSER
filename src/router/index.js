@@ -14,6 +14,7 @@ import MyCoupon from '../components/coupon/MyCoupon.vue'
 import CouponCenter from '../components/coupon/CouponCenter.vue'
 import VIPCenter from '../components/coupon/VIPCenter.vue'
 import RedPacket from '../components/coupon/RedPacket.vue'
+import Goods from '../components/goods/goods.vue'
 import BottomBar from '../components/coupon/BottomBar.vue'
 
 import ResetPassword from '../components/forget-password/ResetPassword.vue'
@@ -75,12 +76,16 @@ Vue.use(VueRouter)
   	  component: ForgetPassword
   },
   {
+  },
+  {
   	  path: '/resetpassword',
   	  name: 'ResetPassword',
   	  component: ResetPassword
   },
 
   {
+	},
+	{
   	  path: '/coupon',
   	  name: 'BottomBar',
   	  component: BottomBar,
