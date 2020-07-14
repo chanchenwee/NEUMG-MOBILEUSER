@@ -9,12 +9,14 @@ import Setting from '../components/setting/Setting.vue'
 import Updateinfo from '../components/update-info/Updateinfo.vue'
 import Updatepassword from '../components/update-password/Updatepassword.vue'
 import UpdateAddress from '../components/updateaddress/UpdateAddress.vue'
+import ForgetPassword from '../components/forget-password/ForgetPassword.vue'
 import MyCoupon from '../components/coupon/MyCoupon.vue'
 import CouponCenter from '../components/coupon/CouponCenter.vue'
 import VIPCenter from '../components/coupon/VIPCenter.vue'
 import RedPacket from '../components/coupon/RedPacket.vue'
 import BottomBar from '../components/coupon/BottomBar.vue'
 
+import ResetPassword from '../components/forget-password/ResetPassword.vue'
 Vue.use(VueRouter)
 
   const routes = [
@@ -65,6 +67,16 @@ Vue.use(VueRouter)
   	  path: '/updateaddress',
   	  name: 'UpdateAddress',
   	  component: UpdateAddress
+  },
+  {
+  	  path: '/forgetpassword',
+  	  name: 'ForgetPassword',
+  	  component: ForgetPassword
+  },
+  {
+  	  path: '/resetpassword',
+  	  name: 'ResetPassword',
+  	  component: ResetPassword
   },
   {
   	  path: '/coupon',

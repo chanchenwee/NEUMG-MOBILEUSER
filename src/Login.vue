@@ -3,12 +3,11 @@
  <div>
        <m-header  style="margin-top: 10px" :mTitle="'欢迎登录'"></m-header>
 <div style="margin-top: 1rem; text-align: center;">
-	<van-image
-	
+	<img
 	  round
-	  width="10rem"
-	  height="10rem"
-	  src="https://img.yzcdn.cn/vant/cat.jpeg"
+	  style="width:10rem;
+	  height:9.5rem"
+	  src="../public/imgs/logo.jpg"
 	/> 
 	</div>
         <section class="page1">
@@ -17,7 +16,7 @@
                     <div class="login-text">
                         <input @mouseenter="focusText"
                                @mouseleave="blurText" v-model="username" type="text" class="login-username" placeholder="用户名/邮箱/已验证手机" />
-                        <i class="iconfont icon-close" data-close="username" v-show="!usernameClose" @click="clearText"></i>
+                        <i class="iconfont icon-close" data-close="username" v-show="!usernameClose" @click="clearText()"></i>
                     </div>
                     <div class="login-text">
                         <input @mouseenter="focusText"
@@ -26,7 +25,7 @@
                             <i class="iconfont icon-close" data-close="password" v-show="!passwordClose" @click="clearText"></i>
                             <i class="iconfont icon-eye1 eye" @click="changeType" v-if="!passwordType"></i>
                             <i class="iconfont icon-eye eye" @click="changeType" v-else></i>
-                            <router-link tag="span" to="./forget-password">忘记密码</router-link>
+                            <router-link tag="span" to="./forgetpassword">忘记密码</router-link>
                         </div>
                     </div>
                 </div>
@@ -73,7 +72,8 @@
                 errMsg: '',
                 usernameClose: true,
                 passwordClose: true,
-                passwordType: 0
+                passwordType: 0,
+				imgurl:"../public/imgs/logo.jpg"
             }
         },
         methods: {
@@ -86,6 +86,7 @@
                 $className === 'login-username' ? this.usernameClose = true : this.passwordClose = true
             },
             clearText(e){
+				alert("a")
                 let $close = e.currentTarget.getAttribute('data-close')
                 console.log($close)
                 this[$close] = ''
