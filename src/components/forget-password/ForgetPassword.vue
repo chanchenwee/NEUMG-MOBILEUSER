@@ -3,14 +3,14 @@
         <m-header :mTitle="'忘记密码'"></m-header>
         <section class="thispage">
 			
-            <div class="forget-content slide-username" v-show="usernameShow">
+            <div class="forget-content slide-username" >
 			 <van-field 
 			 class="input"
 			    v-model="phone"
 			    required
 			    label="手机号"
 			    placeholder="请输入手机号"
-			    error-message="手机号格式错误"
+			    :error-message="errormessage"
 			  />
 			<van-field
 			 class="input"
@@ -21,10 +21,10 @@
 			  placeholder="请输入验证码"
 			>
 			  <template #button>
-			    <van-button size="small" type="danger">发送验证码</van-button>
+			    <van-button size="small" type="danger" @click="getSSM">发送验证码</van-button>
 			  </template>
 			</van-field>
-                <button class="next" @click="phoneNext" :class="{'active' : removeSpace(phone)}">下 一 步</button>
+                <button class="next" @click="phoneNext" :class="{'active' : removeSpace(phone)&&removeSpace(sms)}">下 一 步</button>
             </div>
 
           
@@ -40,60 +40,57 @@
     export default {
         data() {
             return {
-                username: '',
-                answer: '',
-                password: '',
-                questionText: '',
-                forgetToken: '',
-                usernameShow: true,
-                answerShow: false,
-                passwordShow: false,
+              
 				phone:"",
 				sms:"",
+				errormessage:"",
             }
         },
         methods: {
+			//获取验证码
+			getSSM(){
+				if(this.phone==""){
+					this.$message.error("请填写手机号")
+					return;
+				}else if(!formValidate(this.phone,'phone')){
+					this.errormessage="请输入正确的手机号";
+					 this.$message.warning( '手机号格式不正确')
+				}else{
+					this.errormessage="";
+					this.$message.success("验证码为1234");
+				}
+
+			},
+			
+			
+			
+			//点击下一步
             phoneNext(){
-				this.$router.push('./resetpassword');
-                if(!formValidate(this.username,'require')){
-                    return
-                }
-                getQuestion(this.username).then((res)=>{
-                    this.usernameShow = false
-                    this.answerShow = true
-                    this.questionText = res.data
-                })
+				if(formValidate(this.phone,'phone')&&this.sms=="1234"){
+				
+					
+					this.$router.push(	{ path: '/resetpassword', query: { phone: this.phone } });
+				}else if(this.phone==""){
+					this.$message.error("请输入手机号")
+					return;
+				}
+				else if(this.sms==""){
+					this.$message.error("请输入验证码")
+					return;
+				}else if(this.sms!="1234"){
+					this.$message.error("验证码有误")
+					return;
+				}
+				else {
+					this.errormessage="请输入正确的手机号";
+					 this.$message.warning( '手机号格式不正确')
+				}
+				
+				
+              
             },
-            answerNext(){
-                if(!formValidate(this.answer,'require')){
-                    return
-                }
-                let params = {
-                    username: this.username,
-                    question: this.questionText,
-                    answer: this.answer
-                }
-                submitAnswer(params).then((res)=>{
-                    this.forgetToken = res.data
-                    this.usernameShow = false
-                    this.answerShow = false
-                    this.passwordShow = true
-                })
-            },
-            passwordSubmit(){
-                if(!formValidate(this.password,'require')){
-                    return
-                }
-                let params = {
-                    username: this.username,
-                    passwordNew: this.password,
-                    forgetToken: this.forgetToken
-                }
-                forgetResetPassword(params).then(()=>{
-                    alert('重置密码成功')
-                    this.$router.push('./login')
-                })
-            },
+           
+      
             removeSpace(value){
                 return removeSpace(value)
             }

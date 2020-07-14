@@ -17,6 +17,7 @@ import RedPacket from '../components/coupon/RedPacket.vue'
 import BottomBar from '../components/coupon/BottomBar.vue'
 
 import ResetPassword from '../components/forget-password/ResetPassword.vue'
+
 Vue.use(VueRouter)
 
   const routes = [
@@ -78,6 +79,7 @@ Vue.use(VueRouter)
   	  name: 'ResetPassword',
   	  component: ResetPassword
   },
+
   {
   	  path: '/coupon',
   	  name: 'BottomBar',

@@ -16,7 +16,12 @@
         },
         methods: {
             goBack() {
+				if(this.mTitle=="欢迎登录"){
+					this.$router.push('/')
+					return;
+				}
                 this.$router.go(-1)
+				
             }
         }
     }

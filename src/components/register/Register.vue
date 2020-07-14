@@ -11,72 +11,45 @@
                     </div>
                     <div class="register-text">
                         <input @mouseenter="focusText"
-                               @mouseleave="blurText" v-model="password" type="password" class="register-password" placeholder="请输入密码"  />
+                               @mouseleave="blurText" v-model="password" type="password" class="register-password"  placeholder="请输入密码"  />
                         <i class="iconfont icon-close" data-close="password" v-show="!passwordClose" @click="clearText"></i>
                     </div>
                     <div class="register-text">
                         <input @mouseenter="focusText"
-                               @mouseleave="blurText" v-model="email" type="text" class="register-email" placeholder="请输入邮箱"  />
-                        <i class="iconfont icon-close" data-close="email" v-show="!emailClose" @click="clearText"></i>
+                               @mouseleave="blurText" v-model="confirmpassword" type="password" class="register-confirmpassword" placeholder="请确认密码"  />
+                        <i class="iconfont icon-close" data-close="confirmpassword" v-show="!confirmpasswordClose" @click="clearText"></i>
                     </div>
                     <div class="register-text">
                         <input @mouseenter="focusText"
-                               @mouseleave="blurText" v-model="phone" type="text" class="register-phone" placeholder="请输入手机号"  />
+                               @mouseleave="blurText"  v-model="phone" type="text" class="register-phone" placeholder="请输入手机号"  />
                         <i class="iconfont icon-close" data-close="phone" v-show="!phoneClose" @click="clearText"></i>
                     </div>
                 </div>
             </div>
-            <div class="register-error">{{errMsg}}</div>
-            <button class="register-button" @click="registerNext"
-                    :class="{'active' : removeSpace(username)&&removeSpace(password)&&removeSpace(email)&&removeSpace(phone)}">下 一 步</button>
-            <transition name="slide">
-                <div class="set-security" v-show="securityShow">
-                    <div class="set-security-head">
-                        <i class="iconfont icon-left" @click="closeSecurity"></i>
-                        <span>设置密保问题</span>
-                    </div>
-                    <p>设置的密保问题和答案将用于忘记密码时重置密码!</p>
-                    <div class="register-page">
-                        <div class="register-wrap">
-                            <div class="register-text">
-                                <input @mouseenter="focusText"
-                                       @mouseleave="blurText" v-model="question" type="text" class="register-question" placeholder="请输入密保问题" />
-                                <i class="iconfont icon-close" data-close="question" v-show="!questionClose" @click="clearText"></i>
-                            </div>
-                            <div class="register-text">
-                                <input @mouseenter="focusText"
-                                       @mouseleave="blurText" v-model="answer" type="password" class="register-answer" placeholder="请输入密保答案"  />
-                                <i class="iconfont icon-close" data-close="answer" v-show="!answerClose" @click="clearText"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="register-error">{{errMsg}}</div>
-                    <button class="register-button next" @click="registerSubmit"
-                            :class="{'active' : removeSpace(question)&&removeSpace(answer)}">立 即 注 册</button>
-                </div>
-            </transition>
+            <div class="register-error"></div>
+            <button class="register-button" @click="register"
+                    :class="{'active' : removeSpace(username)&&removeSpace(password)&&removeSpace(confirmpassword)&&removeSpace(phone)}">注册</button>
+
         </section>
     </div>
 </template>
 
 <script>
+	
+	let server="http://localhost:8082/";
+	let register="user/register";
     import mHeader from '../common/m-header.vue'
     import {removeSpace,formValidate} from "../../common/js/util";
-    // import {userRegister} from "../../service/getData";
-
     export default {
         data() {
             return {
                 username: '',
                 password: '',
-                email: '',
-                phone: '',
-                question: '',
-                answer: '',
-                errMsg: '',
+                confirmpassword: '',
+                phone: '',           
                 usernameClose: true,
                 passwordClose: true,
-                emailClose: true,
+                confirmpasswordClose: true,
                 phoneClose: true,
                 questionClose: true,
                 answerClose: true,
@@ -99,18 +72,13 @@
                     case 'register-password':
                         this.passwordClose = boolean
                         break
-                    case 'register-email':
-                        this.emailClose = boolean
+                    case 'register-confirmpassword':
+                        this.confirmpasswordClose = boolean
                         break
                     case 'register-phone':
                         this.phoneClose = boolean
                         break
-                    case 'register-question':
-                        this.questionClose = boolean
-                        break
-                    case 'register-answer':
-                        this.answerClose = boolean
-                        break
+                   
                 }
             },
             clearText(e){
@@ -118,42 +86,45 @@
                 console.log($close)
                 this[$close] = ''
             },
-            //下一步
-            registerNext(){
-                if(!formValidate(this.username,'require') || !formValidate(this.password,'require')
-                    || !formValidate(this.email,'require') || !formValidate(this.phone,'require')){
-                    this.errMsg = '请将表格填写完整'
-                    return
-                }
-                if(!formValidate(this.email,'email')){
-                    this.errMsg = '邮箱格式不正确'
-                    return
-                }
-                if(!formValidate(this.phone,'phone')){
-                    this.errMsg = '手机号格式不正确'
-                    return
-                }
-                this.errMsg = ''
-                this.securityShow = true
-            },
             //注册
-            registerSubmit(){
-                if(!formValidate(this.question,'require') || !formValidate(this.answer,'require')){
-                    this.errMsg = '请填写密保问题和答案'
+            register(){
+                if(!formValidate(this.username,'require') || !formValidate(this.password,'require')
+                    || !formValidate(this.phone,'require')){
+                    this.$message.warning( '请将信息填写完整！') 
                     return
                 }
-                let params = {
-                    username: this.username,
-                    password: this.password,
-                    email: this.email,
-                    phone: this.phone,
-                    question: this.question,
-                    answer: this.answer
+
+                if(!formValidate(this.phone,'phone')){
+                    this.$message.warning( '手机号格式不正确！')
+                    return
                 }
-                // userRegister(params).then(()=>{
-                //     alert('注册成功')
-                //     this.$router.push('./login')
-                // })
+				
+				if(this.password!=this.confirmpassword){
+					this.$message.warning( '两次输入的密码不一致！')
+					return
+				}				
+				  const userinfo = {
+				    username: this.username,
+				    password: this.password,			 
+				    phone: this.phone
+				  }
+				  this.axios.post(`${server}${register}`,JSON.stringify(userinfo),{
+                    headers: {
+                      'content-Type':'application/json',
+                    },
+                  }).then((res) => {
+				    console.log(res)
+					if(res.data==1){
+						   this.$message.success('注册成功');
+						   this.$router.push('/login')
+					}else if(res.data==-1){		
+						  this.$message.error('对不起，该手机号已经被注册过了');
+					} 
+
+				  })
+				
+            
+                this.securityShow = true
             },
             closeSecurity(){
                 this.securityShow = false

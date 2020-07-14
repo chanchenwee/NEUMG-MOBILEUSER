@@ -15,7 +15,7 @@
                 <div class="login-wrap">
                     <div class="login-text">
                         <input @mouseenter="focusText"
-                               @mouseleave="blurText" v-model="username" type="text" class="login-username" placeholder="用户名/邮箱/已验证手机" />
+                               @mouseleave="blurText" v-model="username" type="text" class="login-username" placeholder="请输入用户名" />
                         <i class="iconfont icon-close" data-close="username" v-show="!usernameClose" @click="clearText()"></i>
                     </div>
                     <div class="login-text">
@@ -59,16 +59,16 @@
 </template>
 
 <script>
+	
+	let server="http://localhost:8082/";
+	let login="user/login";
     import mHeader from './components/common/m-header.vue'
     import {removeSpace} from "./common/js/util";
-
-
-
     export default {
         data() {
             return {
-                username: '',
-                password: '',
+                username: '随遇而安',
+                password: '123456',
                 errMsg: '',
                 usernameClose: true,
                 passwordClose: true,
@@ -102,14 +102,36 @@
             removeSpace(value){
                 return removeSpace(value)
             },
+			//登录验证
             loginSubmit(){
                 if(!this.username || !this.password){
-                    return
-                }
-                userLogin(this.username,this.password).then((res)=>{
-                        this.errMsg = ''
-                        this.$router.push('./user')
-                })
+                    return;
+                }else{
+					
+					  this.axios.get(`${server}${login}`, {params:{
+					  	'username':this.username,
+					  	'password':this.password,
+					  }}).then(rs=>{
+					  	console.log(rs.data)
+					  	if(rs.data!=""){
+					      sessionStorage.setItem("user",JSON.stringify(rs.data));
+					      if(rs.data.type==1){
+					           sessionStorage.setItem("isVip",true);
+					      }else{
+					        sessionStorage.setItem("isVip",false);
+					      }
+					
+					      this.$message.success("登录成功！")  ;
+						  this.$router.push('/home')
+					      console.log(rs.data);
+					  	}else{
+					  		 this.$message.error("用户名或密码错误！")  ;
+					  	}
+					  });    
+					
+					
+				}
+   
             }
         },
         components: {
