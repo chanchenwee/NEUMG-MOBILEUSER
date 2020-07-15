@@ -71,13 +71,14 @@ Vue.use(VueRouter)
   	  component: UpdateAddress
   },
   {
+
   	  path: '/forgetpassword',
   	  name: 'ForgetPassword',
   	  component: ForgetPassword
   },
+
   {
-  },
-  {
+
   	  path: '/resetpassword',
   	  name: 'ResetPassword',
   	  component: ResetPassword
@@ -111,6 +112,11 @@ Vue.use(VueRouter)
   	  name: 'RedPacket',
   	  component: RedPacket
   },
+  {
+	  path: '/goods',
+	  name: 'Goods',
+	  component: Goods
+  }
 
 ]
 

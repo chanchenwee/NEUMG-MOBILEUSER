@@ -72,10 +72,9 @@
 <script>
   import BScroll from 'better-scroll';
   import Vue from 'vue';
-  import {formatDate} from 'common/js/date';
-  import cartcontrol from 'components/cartcontrol/cartcontrol';
-  import ratingselect from 'components/ratingselect/ratingselect';
-  import split from 'components/split/split';
+  import {formatDate} from '../../common/js/date.js';
+  import cartcontrol from '../cartcontrol/cartcontrol.vue';
+  import split from '../split/split.vue';
 
   const ALL = 2;
 
@@ -225,7 +224,6 @@
     },
     components: {
       cartcontrol,
-      ratingselect,
       split
     }
   };

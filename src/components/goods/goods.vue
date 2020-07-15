@@ -48,20 +48,20 @@
 
 <script>
   import BScroll from 'better-scroll';
-  import shopcart from 'components/shopcart/shopcart';
-  import cartcontrol from 'components/cartcontrol/cartcontrol';
-  import food from 'components/food/food';
+  import shopcart from '../shopcart/shopcart.vue';
+  import cartcontrol from '../cartcontrol/cartcontrol.vue';
+  import food from '../food/food.vue';
 
   const ERR_OK = 0;
 
   export default {
-    props: {
-      seller: {
-        type: Object
-      }
-    },
     data() {
       return {
+		seller:{
+			deliveryPrice: 0,
+			minPrice: 0
+		},
+		
         imgPath:'http://localhost:8082/res/',
         goods: [],
         listHeight: [],
