@@ -78,14 +78,10 @@ Vue.use(VueRouter)
   },
 
   {
-
   	  path: '/resetpassword',
   	  name: 'ResetPassword',
   	  component: ResetPassword
   },
-
-  {
-	},
 	{
   	  path: '/coupon',
   	  name: 'BottomBar',
