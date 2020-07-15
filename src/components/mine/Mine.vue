@@ -5,12 +5,14 @@
 				<section class="user-page">
 					<div class="user-info">
 						<div class="info">
-							<img src="//img11.360buyimg.com/jdphoto/s120x122_jfs/t5683/191/7076936752/5123/834e5571/596dd62bN7a8affc5.png" />
-							<div>
+						<van-image round :src=userImg />
+							
+							<div style="margin-left: 0.8rem;">
 								<p></p>
-								<span v-show="!!userInfo.username" class="name">{{userInfo.username}}</span>
-								<span  v-show="!userInfo.username"class="name" @click="tologin()">点击登录</span>
-								<van-tag round type="danger">钻石vip</van-tag>
+								<span v-if="isLogin" class="name">{{userInfo.username}}</span>
+								<span  v-if="!isLogin" class="name" @click="tologin()">点击登录</span>
+								<van-tag round type="danger">{{viplevel}}</van-tag>
+								
 							</div>
 							<router-link to="./setting" class="account-management">
 								<van-icon class="kefu" name="service" />
@@ -35,7 +37,7 @@
 							<van-icon class="icons" name="clock-o" />
 							<span>足迹</span>
 						</router-link>
-						<router-link tag="div" to="./VIPCenter" class="menu-item">
+						<router-link tag="div" to="./coupon/vipcenter" class="menu-item">
 							<van-icon class="icons" name="coupon-o" />
 							<span>红包</span>
 						</router-link>
@@ -87,12 +89,16 @@
 </template>
 
 <script>
+	let imgserver = "http://localhost:8082/res/";
+	let server="http://localhost:8082/";
+
+	let getMember="member/getMember";
 	import loading from '../../components/common/loading'
 	import MineCoupon from './MineCoupon.vue'
     export default {
         data() {
             return {
-                userInfo: "",
+                userInfo: {"username":""},
                 recommendList: [1,2,3,4],
                 followCount: 0,
                 footCount: 0,
@@ -100,7 +106,11 @@
 				loading: false,
 				finished: false,
 				refreshing: false,
-            }
+				isLogin:false,
+				userImg:"//img11.360buyimg.com/jdphoto/s120x122_jfs/t5683/191/7076936752/5123/834e5571/596dd62bN7a8affc5.png",
+				viplevel:"普通用户",
+				member:"",
+			}
         },
         computed: {
             // ...mapState({
@@ -124,6 +134,11 @@
 			init(){
 				var userJsonStr = sessionStorage.getItem('user');
 				this.userInfo = JSON.parse(userJsonStr);
+				if(this.userInfo!=""){
+					this.isLogin=true;
+				}
+				this.userImg=`${imgserver}`+this.userInfo.icon;
+				this.getMember();
 			},
 			
 			//验证身份
@@ -131,7 +146,38 @@
 			   return  sessionStorage.getItem('isVip');
 			},
 			
+			//判断会员等级的方法
+			checkviplevel(subscores){
+			  if(subscores<=500){
+			    return "黄金会员"
+			  }
+			  else if(500<subscores<1000){
+			    return "白金会员";
+			  }else {
+			     return "钻石会员";
+			  }
 			
+			},
+			//拿到会员信息
+			getMember(){
+				this.axios.get(`${server}${getMember}`,{params:{
+							 clientid: this.userInfo.clientid,
+				 		}}).then((res) => {
+				  console.log(res.data);
+				  if(res.data.getMember=="success"){
+				     var timeArr = res.data.member.certificationdate.replace(" ", ":").replace(/\:/g, "-").split("-");
+				     var time = timeArr[0]+'-'+timeArr[1]+'-'+timeArr[2];
+				     this.member=res.data.member;
+				     this.member.certificationdate=time;
+				     this.viplevel=this.checkviplevel(this.member.accumulatescores);
+				  }else{
+				    this.$Notice.error({
+				        title: '参数错误',
+				        desc: '会员信息获取失败！'
+				    });
+				  }
+				})	
+			},
 			
             getRecommendList() {
                 let params = {
@@ -190,6 +236,7 @@
 <style lang="scss" type="text/css">
 	@import '../../common/style/mixin';
 
+
 	.user-box {
 		background: #F7F7F7;
 		max-height: 50rem;
@@ -224,7 +271,7 @@
 				display: flex;
 				width: 100%;
 				height: 100%;
-				padding: 0.5rem 1rem;
+				padding: 0.5rem 0.6rem;
 				@include boxSizing;
 
 				img {
@@ -235,7 +282,7 @@
 				div {
 					display: flex;
 					flex-direction: column;
-					margin-left: 20px;
+					margin-left: 5px;
 					line-height: 40px;
 					font-size: 28px;
 					color: #fff;

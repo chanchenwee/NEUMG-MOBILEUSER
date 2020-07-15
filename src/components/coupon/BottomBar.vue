@@ -3,7 +3,7 @@
 <div class="routerArea">
 			<router-view></router-view>
 		</div>	
-	<van-tabbar v-model="active">
+	<van-tabbar v-model="active"active-color="#ff0101">
 	<van-tabbar-item icon="coupon-o"@click="toCouponCenter">领券</van-tabbar-item>
 	  <van-tabbar-item icon="balance-o"@click="toVipCenter">领红包</van-tabbar-item>
 	  <van-tabbar-item icon="user-o" @click="toMycoupon">我的优惠卷</van-tabbar-item>
@@ -16,10 +16,10 @@
 	
 		 data() {
 		    return {
-			    active: 0,
+			    active: 2,
 				recommendList:[1,2,3,4],
 				icon: {
-				  active: 'https://img.yzcdn.cn/vant/user-active.png',
+				  active: '',
 				  inactive: 'https://img.yzcdn.cn/vant/user-inactive.png',
 				},
 				
