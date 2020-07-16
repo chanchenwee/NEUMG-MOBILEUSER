@@ -65,7 +65,7 @@
 					}).then((res) => {
 						if (res.data.getmsg) {
 							this.show = false,
-								this.scoresDetails = res.data.memberDetails;
+							this.scoresDetails = res.data.memberDetails;
 							console.log(res.data);
 
 						}

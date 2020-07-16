@@ -91,8 +91,10 @@
 			//初始化
 			init(){
 				var userJsonStr = sessionStorage.getItem('user');
-				this.userInfo = JSON.parse(userJsonStr);
-				this.userImg=`${imgserver}`+this.userInfo.icon;
+				this.userInfo = JSON.parse(userJsonStr);			
+				if(this.userInfo.icon!=null){
+					this.userImg=`${imgserver}`+this.userInfo.icon;	
+				}
 			},
 			
 			//验证身份

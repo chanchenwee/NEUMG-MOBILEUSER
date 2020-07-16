@@ -138,7 +138,11 @@
 					this.userInfo = JSON.parse(userJsonStr);
 					if(this.userInfo!=""){
 						this.isLogin=true;
-						this.userImg=`${imgserver}`+this.userInfo.icon;				
+					
+						if(this.userInfo.icon!=null){
+							this.userImg=`${imgserver}`+this.userInfo.icon;	
+						}
+								
 						this.getMember();
 					
 							

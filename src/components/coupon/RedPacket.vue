@@ -73,6 +73,7 @@
 
 <script>
 	import { Dialog } from 'vant';
+	import { Toast } from 'vant';
 	import ScoresHeader from './ScoresHeader.vue';
 	let server="http://localhost:8082/";
 	let getAll="redpacket/getAll";
@@ -108,16 +109,24 @@
 		methods: {
 			//初始化
 			init () {
-			 var userJsonStr = sessionStorage.getItem('user');
-			 if(userJsonStr!=null&&userJsonStr!=""){
-			 	this.user = JSON.parse(userJsonStr); 
-					this.getRPByTime();
-			 }
+	
+			  var userJsonStr = sessionStorage.getItem('user');
+			  if (userJsonStr != null && userJsonStr != "") {
+			  let user = JSON.parse(userJsonStr);
+			  this.axios.get(`${server}${getClient}`, {
+			  	params: {
+			  		clientid: user.clientid,
+			  	}
+			  }).then((res) => {
+			  	this.user=res.data;
+				this.getRPByTime();
+			  })			
+			  	
+			  }
+			  this.axios.get(`${server}${getAll}`).then((res) => {
 			  
-			this.axios.get(`${server}${getAll}`).then((res) => {
-			
-			    this.redPackets = res.data;
-			  })
+			      this.redPackets = res.data;
+			    })
 			  
 			},
 			//验证身份
@@ -149,7 +158,7 @@
 			exchange(event,item){
 			   console.log();
 			  if(this.user.type==0){
-			    this.$message.warning("对不起，您不可兑换，请先开通会员！")
+			    Toast.fail("对不起，您不可兑换，请先开通会员！")
 			  }else{
 			
 			    if(event.target.innerText=="已兑换"){
@@ -158,7 +167,7 @@
 			     let needscore=item.needscore;
 			     let nowscore=this.user.scores;
 			     if(needscore>nowscore){
-			       this.$message.error("对不起，您的积分不足，无法兑换");
+			      Toast.fail("对不起，您的积分不足，无法兑换");
 			     }else{
 					 Dialog.confirm({
 					   title: '兑换红包',
@@ -179,10 +188,10 @@
                         if(res.data.insertmsg){
                             this.updateScores(needscore);
                             this.uodateMemberDetail(needscore,item);
-                            this.$message.success("兑换成功，请到我的优惠卷中查看！");
+                            Toast.success("兑换成功，请到我的优惠卷中查看！");
                             this.init();
                         }else{ 
-							this.$message.error("内部错误，兑换失败");}
+							Toast.fail("内部错误，兑换失败");}
                       })
 
                      })

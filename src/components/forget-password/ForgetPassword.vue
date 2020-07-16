@@ -33,9 +33,11 @@
 </template>
 
 <script>
+	import { Toast } from 'vant';
     import mHeader from '../common/m-header.vue'
     import {removeSpace,formValidate} from "../../common/js/util";
-    
+    let server = "http://localhost:8082/";
+    let checkPhoneRepeat = "user/checkPhoneRepeat";
 
     export default {
         data() {
@@ -50,14 +52,14 @@
 			//获取验证码
 			getSSM(){
 				if(this.phone==""){
-					this.$message.error("请填写手机号")
+					Toast.fail("请填写手机号")
 					return;
 				}else if(!formValidate(this.phone,'phone')){
 					this.errormessage="请输入正确的手机号";
-					 this.$message.warning( '手机号格式不正确')
+					 Toast.fail( '手机号格式不正确')
 				}else{
 					this.errormessage="";
-					this.$message.success("验证码为1234");
+					Toast.success("验证码为1234");
 				}
 
 			},
@@ -68,17 +70,30 @@
             phoneNext(){
 				if(formValidate(this.phone,'phone')&&this.sms=="1234"){
 				
+					this.axios.get(`${server}${checkPhoneRepeat}`, {
+						params: {
+							phone: this.phone,
+							
+						}
+					}).then((res) => {
+						if (res.data) {
+							this.$router.push(	{ path: '/resetpassword', query: { phone: this.phone } });					
+						} else {
+							Toast.fail("对不起，该手机号尚未注册！");
+						}
+					})
+				
 					
-					this.$router.push(	{ path: '/resetpassword', query: { phone: this.phone } });
+					
 				}else if(this.phone==""){
-					this.$message.error("请输入手机号")
+					Toast.fail("请输入手机号")
 					return;
 				}
 				else if(this.sms==""){
-					this.$message.error("请输入验证码")
+					Toast.fail("请输入验证码")
 					return;
 				}else if(this.sms!="1234"){
-					this.$message.error("验证码有误")
+					Toast.fail("验证码有误")
 					return;
 				}
 				else {

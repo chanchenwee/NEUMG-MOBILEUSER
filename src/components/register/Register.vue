@@ -35,7 +35,7 @@
 </template>
 
 <script>
-	
+	import { Toast } from 'vant';
 	let server="http://localhost:8082/";
 	let register="user/register";
     import mHeader from '../common/m-header.vue'
@@ -90,17 +90,17 @@
             register(){
                 if(!formValidate(this.username,'require') || !formValidate(this.password,'require')
                     || !formValidate(this.phone,'require')){
-                    this.$message.warning( '请将信息填写完整！') 
+                    Toast.fail( '请将信息填写完整！') 
                     return
                 }
 
                 if(!formValidate(this.phone,'phone')){
-                    this.$message.warning( '手机号格式不正确！')
+                    Toast.fail( '手机号格式不正确！')
                     return
                 }
 				
 				if(this.password!=this.confirmpassword){
-					this.$message.warning( '两次输入的密码不一致！')
+					Toast.fail( '两次输入的密码不一致！')
 					return
 				}				
 				  const userinfo = {
@@ -115,10 +115,10 @@
                   }).then((res) => {
 				    console.log(res)
 					if(res.data==1){
-						   this.$message.success('注册成功');
+						   Toast.success('注册成功');
 						   this.$router.push('/login')
 					}else if(res.data==-1){		
-						  this.$message.error('对不起，该手机号已经被注册过了');
+						  Toast.fail('对不起，该用户名或手机已经被注册过了');
 					} 
 
 				  })

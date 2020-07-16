@@ -59,7 +59,7 @@
 </template>
 
 <script>
-	
+	import { Toast } from 'vant';
 	let server="http://localhost:8082/";
 	let login="user/login";
     import mHeader from './components/common/m-header.vue'
@@ -121,11 +121,11 @@
 					        sessionStorage.setItem("isVip",false);
 					      }
 					
-					      this.$message.success("登录成功！")  ;
+					      Toast.success("登录成功！")  ;
 						  this.$router.push('/home')
 					      console.log(rs.data);
 					  	}else{
-					  		 this.$message.error("用户名或密码错误！")  ;
+					  		 Toast.fail("用户名或密码错误！")  ;
 					  	}
 					  });    
 					

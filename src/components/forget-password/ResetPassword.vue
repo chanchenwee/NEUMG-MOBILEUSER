@@ -34,6 +34,7 @@
 </template>
 
 <script>
+	import { Toast } from 'vant';
 	let server = "http://localhost:8082/";
 	let updatepassword = "user/updatepassword";
 	import mHeader from '../common/m-header.vue'
@@ -125,17 +126,17 @@
 
 							if (res.data) {
 								console.log(res.data)
-								this.$message.success("修改密码成功");
+								Toast.success("修改密码成功");
 								this.$router.push('/login');
 							} else {
-								this.$message.error("对不起，该用户不存在，修改密码失败！");
+								Toast.fail("对不起，该用户不存在，修改密码失败！");
 							}
 						})
 					} else {
-						this.$message.warning("两次输入的密码不一致")
+						Toast.fail("两次输入的密码不一致")
 					}
 				} else {
-					this.$message.warning("请输入新密码")
+					Toast.fail("请输入新密码")
 				}
 			},
 			focus(type) {

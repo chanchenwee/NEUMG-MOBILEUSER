@@ -55,7 +55,7 @@
 </template>
 
 <script>
-	
+	import { Toast } from 'vant';
 	let server="http://localhost:8082/";
 	let getAll="coupon/getAll";
 	let insertCouponReceive="couponreceive/insertCouponReceive";
@@ -86,6 +86,7 @@
 			 this.init();
 			
 		},
+
 
 		methods: {
 			
@@ -126,7 +127,7 @@
 			  getCoupon(event,coupon){
 			
 			      if(this.checkMember()==false&&(coupon.limituser==1)){//非会员限制
-			        this.$message.warning("对不起，该优惠卷仅限vip用户，请先认证为会员！")  ;
+			       Toast.fail("对不起，该优惠卷仅限vip用户，请先认证为会员！")  ;
 			        return;
 			      }else{
 			        if(event.target.innerText=="立即使用"){
@@ -144,7 +145,7 @@
 			                  },
 			                }).then((res) => {
 			                  if(res.data.insertmsg){
-			                      this.$message.success("优惠卷领取成功！");
+			                      Toast.success("优惠卷领取成功！");
 			                      this.updateCouponNum(coupon.couponid);
 			                      this.init();//刷新页面，优惠卷的领取状态改变
 			                  }
@@ -167,7 +168,7 @@
 			  					console.log(res.data)
 			
 			  				  }else{
-			  					  this.$message.error("内部错误，修改优惠卷数量失败");
+			  					  Toast.fail("内部错误，修改优惠卷数量失败");
 			  				  }
 			
 			  				})

@@ -12,6 +12,8 @@ import 'vant/lib/index.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import { AddressEdit } from 'vant';
 
+
+
 Vue.use(AddressEdit);
 Vue.use(Lazyload);
 Vue.use(Vant);

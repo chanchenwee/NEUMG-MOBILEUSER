@@ -124,6 +124,7 @@
 <script>
 	let server = "http://localhost:8082/";
 	let getMember = "member/getMember";
+	let getClient = "client/getClient";
 	export default {
 
 		data() {
@@ -136,7 +137,7 @@
 				},	
 				user: "",
 				member: "",
-				imgurl: "",
+				imgurl: "//img11.360buyimg.com/jdphoto/s120x122_jfs/t5683/191/7076936752/5123/834e5571/596dd62bN7a8affc5.png",
 				viplevel: "",
 				scoresDetail:[],
 			};
@@ -150,13 +151,22 @@
 			init() {
 				var userJsonStr = sessionStorage.getItem('user');
 				if (userJsonStr != null && userJsonStr != "") {
-					this.user = JSON.parse(userJsonStr);
-					let img = "res/" + this.user.icon;
-					this.imgurl = `${server}${img}`;
+				let user = JSON.parse(userJsonStr);
+				this.axios.get(`${server}${getClient}`, {
+					params: {
+						clientid: user.clientid,
+					}
+				}).then((res) => {
+					console.log(res);
+					this.user=res.data;
+					if(this.user.icon!=null){
+						let img = "res/" + this.user.icon;
+						this.imgurl = `${server}${img}`;
+					}
 					this.getMember();					
+				})			
+					
 				}
-
-
 
 			},
 

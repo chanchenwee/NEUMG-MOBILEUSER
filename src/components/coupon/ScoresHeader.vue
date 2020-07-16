@@ -45,7 +45,6 @@
 		data() {
 			return {
 				user:"",
-				member:"",	
 				show: false,
 
 			};

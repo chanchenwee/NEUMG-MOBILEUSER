@@ -94,7 +94,7 @@
                   })
                   this.$router.push('coupon/vipcenter')
                 }else{
-                  this.$message.error(rs.data.msg);
+                  Toast.fail(rs.data.msg);
                 }
               });
             })
