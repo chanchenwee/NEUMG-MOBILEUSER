@@ -132,7 +132,6 @@
 			//entry function
 			foodEntry(){
 				console.log("food entry");
-				this.$router.push("/goods");
 			},
 			discountEntry(){
 				console.log("discount entry");
