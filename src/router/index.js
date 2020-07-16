@@ -14,6 +14,7 @@ import MyCoupon from '../components/coupon/MyCoupon.vue'
 import CouponCenter from '../components/coupon/CouponCenter.vue'
 import VIPCenter from '../components/coupon/VIPCenter.vue'
 import RedPacket from '../components/coupon/RedPacket.vue'
+import Goods from '../components/goods/goods.vue'
 import BottomBar from '../components/coupon/BottomBar.vue'
 import ResetPassword from '../components/forget-password/ResetPassword.vue'
 import ScoresDetail from '../components/coupon/ScoresDetail.vue'
@@ -69,17 +70,18 @@ Vue.use(VueRouter)
   	  component: UpdateAddress
   },
   {
+
   	  path: '/forgetpassword',
   	  name: 'ForgetPassword',
   	  component: ForgetPassword
   },
+
   {
   	  path: '/resetpassword',
   	  name: 'ResetPassword',
   	  component: ResetPassword
   },
-
-  {
+	{
   	  path: '/coupon',
   	  name: 'BottomBar',
   	  component: BottomBar,
@@ -105,12 +107,21 @@ Vue.use(VueRouter)
   	  name: 'RedPacket',
   	  component: RedPacket
   },
+<<<<<<< HEAD
   
   {
   	  path: '/scoresdetail',
   	  name: 'ScoresDetail',
   	  component: ScoresDetail
   },
+=======
+  {
+	  path: '/goods',
+	  name: 'Goods',
+	  component: Goods
+  }
+
+>>>>>>> 862830734f83b7fed39244b267b9402908e5086a
 ]
 
 const router = new VueRouter({
