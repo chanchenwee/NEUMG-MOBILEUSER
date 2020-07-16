@@ -86,12 +86,27 @@
 			<span class="thistext">会员升级下单积分加倍</span>
 		</div>
 		<div class="recommend-list">
-			<div class="recommend-item" v-for="(item,index) in recommendList" @click="productDetail(index)">
-				<img :src="item.imageHost+item.mainImage" v-if="item.imageHost && item.mainImage" />
-				<img src="../../../public/imgs/mine/product_default.jpg" v-else />
-				<p>{{item.name}}</p>
-				<i>￥ {{item.price}}</i>
+			<div class="recommend-item"  @click="productDetail(index)">
+			
+				<img src="../../../public/imgs/vipcenter/food1.png" />
 			</div>
+			<div class="recommend-item"  @click="productDetail(index)">
+				
+				<img src="../../../public/imgs/vipcenter/food2.png"  />
+
+			</div>
+			<div class="recommend-item"  @click="productDetail(index)">
+				
+				<img src="../../../public/imgs/vipcenter/food3.png"  />
+
+			</div>
+			<div class="recommend-item"  @click="productDetail(index)">
+				
+				<img src="../../../public/imgs/vipcenter/food4.png"  />
+				<!-- <p>{{item.name}}</p> -->
+				<!-- <i>￥ {{item.price}}</i> -->
+			</div>
+			
 		</div>
 	</div>
 
@@ -130,7 +145,7 @@
 		data() {
 			return {
 				active: 0,
-				recommendList: [1, 2, 3, 4],
+				recommendList: [1, 2],
 				icon: {
 					active: 'https://img.yzcdn.cn/vant/user-active.png',
 					inactive: 'https://img.yzcdn.cn/vant/user-inactive.png',
@@ -238,6 +253,9 @@
 			VipCertify(){
 				this.$router.push('/vipCertify')
 			},
+			productDetail(){
+				this.$router.push('/')
+			}
 		},
 	};
 </script>
@@ -409,7 +427,7 @@
 
 			img {
 				width: 100%;
-				height: 6rem;
+				height: 8.5rem;
 				margin: 0 auto;
 			}
 

@@ -31,29 +31,52 @@
             <p class="err-msg">{{errMsg}}</p>
             <button class="password-submit" :class="{'active' : removeSpace(oldPassword)&&removeSpace(newPassword)}" @click="submitPassword">确认</button>
         </section>
-        <message v-show="isMessage" :message-text="messageText"></message>
+      
     </div>
 </template>
 
 <script>
     import message from '../../components/common/message'
     import {removeSpace} from "../../common/js/util";
+	import { Toast } from 'vant';
     // import {updatePassword,logout} from "../../service/getData";
-
+	let server = "http://localhost:8082/";
+	let updatepassword = "user/updatepassword";
+	let getClient = "client/getClient";
     export default {
         data(){
             return {
+				user:"",
                 oldPassword: '',
                 newPassword: '',
                 oldClose: false,
                 newClose: false,
                 errMsg: '',
                 passwordType: 0,
-                messageText: '',
-                isMessage: false
+
+				
             }
         },
+		
+		created(){
+			this.init();
+		},
         methods: {
+			init(){
+			var userJsonStr = sessionStorage.getItem('user');
+			if (userJsonStr != null && userJsonStr != "") {
+			let user = JSON.parse(userJsonStr);
+			this.axios.get(`${server}${getClient}`, {
+				params: {
+					clientid: user.clientid,
+				}
+			}).then((res) => {
+				this.user=res.data;
+			})			
+				
+			 }
+			},
+			
             focusText(e){
                 let $className = e.currentTarget.className
                 console.log($className)
@@ -64,7 +87,9 @@
                 $className === 'old-password' ? this.oldClose = false : this.newClose = false
             },
             clearText(e){
+				console.log("a");
                 let $close = e.currentTarget.getAttribute('data-close')
+				console.log($close);
                 this[$close] = ''
             },
             changeType(){
@@ -87,24 +112,31 @@
                     return
                 }
                 if(!/^[a-zA-Z0-9\x21-\x7e]{6,20}$/.test(this.newPassword)){
-                    this.errMsg = '密码格式不对'
+                   Toast.fail('密码格式不对') 
                     return
                 }
-                this.errMsg = ''
-                // updatePassword(this.oldPassword,this.newPassword).then((res)=>{
-                //     this.showMessage()
-                //     setTimeout(()=>{
-                //         logout().then(()=>{
-                //             this.$router.push('./user')
-                //         })
-                //     },1300)
-                // })
+				if(this.oldPassword==this.user.password){
+					this.axios.get(`${server}${updatepassword}`, {
+						params: {
+							phone: this.user.phone,
+							password: this.newPassword,
+							
+						}
+					}).then((res) => {
+						if(res.data){
+							this.showMessage();
+						}else{
+							Toast.fail("内部错误，修改密码失败")
+						}
+					})	
+				}else{
+					Toast.fail("旧密码输入错误！")
+				}
             },
-            showMessage() {
-                this.isMessage = true
-                this.messageText = '更新密码成功！'
+            showMessage() {	
+                Toast.success( '修改密码成功,请重新登录！')
                 setTimeout(() => {
-                    this.isMessage = false
+                    this.$router.push('./login')
                 }, 1200)
             },
             goBack(){
@@ -160,9 +192,9 @@
                         font-size: 15px;
                     }
                     div{
-                        line-height: 2rem;
+                        line-height: 1.8rem;
                         .iconfont{
-                            font-size: 22px;
+                            font-size: 18px;
                             color: #CCCCCC;
                             &.icon-close{
                                 padding-top: 6px;
