@@ -86,10 +86,10 @@
                 $className === 'login-username' ? this.usernameClose = true : this.passwordClose = true
             },
             clearText(e){
-				alert("a")
-                let $close = e.currentTarget.getAttribute('data-close')
-                console.log($close)
-                this[$close] = ''
+				alert("a");
+                let $close = e.currentTarget.getAttribute('data-close');
+                console.log($close);
+                this[$close] = '';
             },
             changeType(){
                 let $type = this.$refs.passwordText.getAttribute('type'),

@@ -110,6 +110,7 @@
 				this.hiddenBlurSearch();
 			},
 			showBlurSearch(){
+				this.$router.push("/search");
 				this.vis_search = true;
 			},
 			hiddenBlurSearch(){
@@ -128,10 +129,13 @@
 			toFoodPage(foodItem){
 				console.log(foodItem.fname);
 				console.log("gogogo");
+				this.$router.push({path: "/food", query: {fid: foodItem.fid}});
 			},
 			//entry function
 			foodEntry(){
 				console.log("food entry");
+				
+				this.$router.push("/food");
 			},
 			discountEntry(){
 				console.log("discount entry");

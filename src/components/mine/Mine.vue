@@ -98,6 +98,7 @@
     export default {
         data() {
             return {
+
                 userInfo:"",
                 recommendList: [1,2,3,4],
                 followCount: 0,
@@ -120,7 +121,7 @@
         },
         
         created() {
-             this.init();
+             // this.init();
         },
         mounted() {
             // this.followCount = this.followList.length

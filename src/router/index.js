@@ -15,6 +15,8 @@ import CouponCenter from '../components/coupon/CouponCenter.vue'
 import VIPCenter from '../components/coupon/VIPCenter.vue'
 import RedPacket from '../components/coupon/RedPacket.vue'
 import BottomBar from '../components/coupon/BottomBar.vue'
+import FoodHome from '../views/FoodHome.vue'
+import SearchFood from '../components/util/SearchFood.vue'
 import ResetPassword from '../components/forget-password/ResetPassword.vue'
 import ScoresDetail from '../components/coupon/ScoresDetail.vue'
 import VipCertify from '../components/vipCertify/VipCertify.vue'
@@ -79,6 +81,7 @@ Vue.use(VueRouter)
   	  name: 'ResetPassword',
   	  component: ResetPassword
   },
+	
 
   {
   	  path: '/coupon',
@@ -108,6 +111,7 @@ Vue.use(VueRouter)
   },
   
   {
+
   	  path: '/scoresdetail',
   	  name: 'ScoresDetail',
   	  component: ScoresDetail
@@ -117,7 +121,15 @@ Vue.use(VueRouter)
   	  name: 'VipCertify',
   	  component: VipCertify
   },
-]
+  {  path: '/food',
+	  name: 'FoodHome',
+	  component: FoodHome
+  },
+  {
+	  path: '/search',
+	  name: 'SearchFood',
+	  component: SearchFood
+  }]
 
 const router = new VueRouter({
   mode: 'history',
