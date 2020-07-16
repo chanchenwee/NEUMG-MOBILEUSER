@@ -110,7 +110,7 @@
 		</van-grid>
 	</div>
 	<div class="cell" style="background-color: #fff">
-		<van-button v-if="user.type==0" type="warning" style="width: 90%; margin-left: 1rem;" round size="large">点我认证会员</van-button>
+		<van-button v-if="user.type==0" type="warning" style="width: 90%; margin-left: 1rem;" round size="large" @click="VipCertify">点我认证会员</van-button>
 		<van-button v-if="user.type==1" type="warning" style="width: 90%; margin-left: 1rem;" round size="large" @click="showScoreDetail">查看积分明细</van-button>
 	</div>
 
@@ -223,6 +223,10 @@
 			},
 			toCouponCenter() {
 				this.$router.push("/CouponCenter")
+			},
+			//认证会员
+			VipCertify(){
+				this.$router.push('/vipCertify')
 			},
 		},
 	};

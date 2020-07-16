@@ -1,0 +1,176 @@
+.header {
+    padding: 0.4rem 1.5rem 0.4rem 1rem;
+    line-height: 1.8rem;
+}
+.pos-re {
+    position: relative;
+}
+.header .basicAttention {
+	background-image: url(../../../public/imgs/vipcenter/attention.png);
+    background-repeat: no-repeat;
+    background-position: 0%;
+    background-size: 1rem;
+    padding-left: 2.08rem;
+}
+.col-999999 {
+    color: #bfbfbf;
+}
+
+.cl:after {
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+.nameAndId {
+    padding: 0 1.6rem 0 1.6rem;
+}
+.col-bgw {
+    background: #ffffff;
+}
+.ui-form-item {
+    height: 4rem;
+    overflow: hidden;
+}
+.pos-re {
+    position: relative;
+}
+.anim-label {
+    -webkit-user-select: none;
+    top: 1rem;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 1rem;
+    width: 50%;
+    text-align: left;
+    color: #b8b8ba;
+    position: absolute;
+    pointer-events: auto;
+    -webkit-transform-origin: left top 0px;
+    transform-origin: left top 0px;
+    will-change: transform;
+    -webkit-transition: transform 350ms ease-out;
+    -moz-transition: transform 350ms ease-out;
+    -ms-transition: transform 350ms ease-out;
+    transition: transform 350ms ease-out;
+    -webkit-transform: scale(1) translate3d(0, 0, 0);
+    -moz-transform: scale(1) translate3d(0, 0, 0);
+    -ms-transform: scale(1) translate3d(0, 0, 0);
+    transform: scale(1) translate3d(0, 0, 0);
+}
+.anim-input {
+    background: none;
+    display: inline-block;
+    margin: 0;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    width: 100%;
+    text-align: left;
+    height: 0.5rem;
+    color: #252525;
+    font-size: 1rem;
+    line-height: 1.8rem;
+    position: absolute;
+}
+input {
+    border: none;
+}
+input, button, select, textarea {
+    outline: none;
+    -webkit-appearance: none;
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+.rightCancel {
+    width: 2rem;
+    height: 2rem;
+    right: 1.22rem;
+    top: 3.38rem;
+}
+.pos-ab {
+    position: absolute;
+}
+.dn {
+    display: none;
+}
+.rightCancel img {
+    width: 1.44rem;
+    height: 1.44rem;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    -moz-transform: translate3d(-50%, -50%, 0);
+    -ms-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
+}
+.pos-ab {
+    position: absolute;
+}
+img {
+    vertical-align: middle;
+}
+.border-1px {
+    position: relative;
+}
+
+.pos-re {
+    position: relative;
+}
+.border-1px.border-top:before {
+    border-top: 1px solid #ddd;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2)
+.border-1px:before {
+    right: -100%;
+    bottom: -100%;
+    -webkit-transform: scale(0.5);
+}
+.border-1px:before {
+    display: block;
+    content: '';
+    overflow: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    -webkit-transform-origin: 0 0;
+    -webkit-transform: scale(1);
+    pointer-events: none;
+}
+
+.makeSurebtn {
+    border-radius: 4px;
+    text-align: center;
+    height: 3rem;
+    width: 90%;
+    line-height: 3rem;
+    font-size: 1rem;
+    margin: 1.7rem auto 0;
+    color: #fff;
+    background-color: #cccccc;
+}
+.col-btn1Gray {
+    background: #b7d6f4;
+}
+.bottomCustomerService {
+    padding-top: 3.0rem;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #999999;
+    text-align: center;
+}
+.anim-lable-moved{
+	transform: scale(0.5) translate3d(0,-10px,0);
+	color: #359df5;
+}
+
+
+.btn-can-press {
+    background-color: #ff0000;
+}

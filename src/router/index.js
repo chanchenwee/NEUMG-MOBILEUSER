@@ -17,6 +17,7 @@ import RedPacket from '../components/coupon/RedPacket.vue'
 import BottomBar from '../components/coupon/BottomBar.vue'
 import ResetPassword from '../components/forget-password/ResetPassword.vue'
 import ScoresDetail from '../components/coupon/ScoresDetail.vue'
+import VipCertify from '../components/vipCertify/VipCertify.vue'
 Vue.use(VueRouter)
 
   const routes = [
@@ -110,6 +111,11 @@ Vue.use(VueRouter)
   	  path: '/scoresdetail',
   	  name: 'ScoresDetail',
   	  component: ScoresDetail
+  },
+  {
+  	  path: '/vipCertify',
+  	  name: 'VipCertify',
+  	  component: VipCertify
   },
 ]
 
