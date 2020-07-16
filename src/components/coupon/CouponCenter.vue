@@ -213,13 +213,12 @@
 			   CouponStatus(couponid){
 			      let length=this.owncoupons.length;
 			      console.log("length"+length)
-			     for(let j=0;j<length;j++){
+				  this.buttext[couponid]=true;
+			     for(let j=0;j<length;j++){			
 			       if(couponid==this.owncoupons[j]){
 			          this.buttext[couponid]=false;
-			         return " van-coupon van-coupon--disabled";
-			        }else{
-			              this.buttext[couponid]=true;
-			          }
+			        return " van-coupon van-coupon--disabled";
+			         }
 			        }
 			       return "van-coupon ";				
 			

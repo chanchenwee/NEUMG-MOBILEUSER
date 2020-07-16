@@ -98,7 +98,7 @@
     export default {
         data() {
             return {
-                userInfo: {"username":""},
+                userInfo:"",
                 recommendList: [1,2,3,4],
                 followCount: 0,
                 footCount: 0,
@@ -110,6 +110,7 @@
 				userImg:"//img11.360buyimg.com/jdphoto/s120x122_jfs/t5683/191/7076936752/5123/834e5571/596dd62bN7a8affc5.png",
 				viplevel:"普通用户",
 				member:"",
+				
 			}
         },
         computed: {
@@ -132,13 +133,19 @@
         methods: {
 			//初始化
 			init(){
-				var userJsonStr = sessionStorage.getItem('user');
-				this.userInfo = JSON.parse(userJsonStr);
-				if(this.userInfo!=""){
-					this.isLogin=true;
-				}
-				this.userImg=`${imgserver}`+this.userInfo.icon;
-				this.getMember();
+				var userJsonStr = sessionStorage.getItem('user');				
+				if(userJsonStr!=null&&userJsonStr!=""){
+					this.userInfo = JSON.parse(userJsonStr);
+					if(this.userInfo!=""){
+						this.isLogin=true;
+						this.userImg=`${imgserver}`+this.userInfo.icon;				
+						this.getMember();
+					
+							
+					}else{
+						this.isLogin=false;
+					}
+				}		
 			},
 			
 			//验证身份
@@ -160,6 +167,7 @@
 			},
 			//拿到会员信息
 			getMember(){
+				if(this.userInfo.type==1){
 				this.axios.get(`${server}${getMember}`,{params:{
 							 clientid: this.userInfo.clientid,
 				 		}}).then((res) => {
@@ -171,13 +179,13 @@
 				     this.member.certificationdate=time;
 				     this.viplevel=this.checkviplevel(this.member.accumulatescores);
 				  }else{
-				    this.$Notice.error({
-				        title: '参数错误',
-				        desc: '会员信息获取失败！'
-				    });
+					  this.$message.error("参数错误，会员信息获取失败")
 				  }
 				})	
-			},
+			 }else{
+				 
+			 }	
+			},		
 			
             getRecommendList() {
                 let params = {

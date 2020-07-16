@@ -15,9 +15,8 @@ import CouponCenter from '../components/coupon/CouponCenter.vue'
 import VIPCenter from '../components/coupon/VIPCenter.vue'
 import RedPacket from '../components/coupon/RedPacket.vue'
 import BottomBar from '../components/coupon/BottomBar.vue'
-
 import ResetPassword from '../components/forget-password/ResetPassword.vue'
-
+import ScoresDetail from '../components/coupon/ScoresDetail.vue'
 Vue.use(VueRouter)
 
   const routes = [
@@ -106,7 +105,12 @@ Vue.use(VueRouter)
   	  name: 'RedPacket',
   	  component: RedPacket
   },
-
+  
+  {
+  	  path: '/scoresdetail',
+  	  name: 'ScoresDetail',
+  	  component: ScoresDetail
+  },
 ]
 
 const router = new VueRouter({

@@ -278,4 +278,26 @@
 	       text-overflow: ellipsis;
 	       white-space: nowrap;
 	   }
+	   .xcoupon.disabled .xcoupon_main[data-v-3026bfe6] {
+	       border-top: 0.3rem solid #999;
+	   }
+	   .xcoupon.disabled .xcoupon_price[data-v-3026bfe6] {
+	       color: #999;
+	   }
+	   .xcoupon.disabled .xcoupon_tag[data-v-3026bfe6] {
+	       border-color: #999;
+	       background-color: #999;
+	   }
+	   .xcoupon_right_tag.expired[data-v-3026bfe6] {
+	       background: url(https://img11.360buyimg.com/jdphoto/s90x88_jfs/t1/61991/32/15789/7274/5dd26d63Eeed530bf/b140b69c4c3ff9bf.png) no-repeat;
+	       background-size: 100% 100%;
+	   }
+	   .xcoupon_right_tag[data-v-3026bfe6] {
+	       position: absolute;
+	       z-index: -1;
+	       top: 2rem;
+	       right: 0;
+	       width: 2.25rem;
+	       height: 2.2rem;
+	   }
 	   
