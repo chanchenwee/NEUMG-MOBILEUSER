@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import './common/stylus/index.styl';
+import './common/stylus/index.styl'
 import store from './store'
 import { Tabbar, TabbarItem } from 'vant'
 import axios from 'axios'
@@ -15,19 +15,19 @@ import { AddressEdit } from 'vant';
 import { Loading } from 'element-ui';
 import { Toast } from 'vant';
 axios.interceptors.request.use(function(request){
-	console.log("ÎÒÔÚmain.jsÖĞloading......")
+	console.log("æˆ‘åœ¨main.jsä¸­loading......")
 	 Toast.loading({
-	   message: '¼ÓÔØÖĞ...',
+	   message: 'åŠ è½½ä¸­...',
 	   forbidClick: true,
 	   loadingType: 'spinner',
 	 });
 	 return request;
 	});
-	//´íÎóÊÕ²»µ½response
+	//é”™è¯¯æ”¶ä¸åˆ°response
 axios.interceptors.response.use(function (response) {
 	// loadingInstance.close();
 	Toast.clear();
-	console.log("ÎÒÊÇmain.jsÖĞµÄÇ°¶Ë¹ıÂËÆ÷£¬axios»ØÀ´ÁË£¬close loading......");
+	console.log("æˆ‘æ˜¯main.jsä¸­çš„å‰ç«¯è¿‡æ»¤å™¨ï¼Œaxioså›æ¥äº†ï¼Œclose loading......");
 	// if(undefined == response.data.isLogin || response.data.isLogin){
 	return response;
 	// }else{
@@ -35,7 +35,7 @@ axios.interceptors.response.use(function (response) {
 	// 	if(undefined != response.data.msg){
 	// 		Vue.prototype.$message.error(response.data.msg);
 	// 	}else{
-	// 		Vue.prototype.$message.error("»á»°³¬Ê±£¬ÇëÖØĞÂµÇÂ¼...");
+	// 		Vue.prototype.$message.error("ä¼šè¯è¶…æ—¶ï¼Œè¯·é‡æ–°ç™»å½•...");
 
 	// 	}
 
@@ -45,7 +45,7 @@ axios.interceptors.response.use(function (response) {
 
 
 }, err => {
-	console.log("ÎÒÔÚmain.jsÖĞ·¢ÏÖ´íÎó£¬close loading......");
+	console.log("æˆ‘åœ¨main.jsä¸­å‘ç°é”™è¯¯ï¼Œclose loading......");
 	Toast.clear();
 	return Promise.reject(err);
 });
