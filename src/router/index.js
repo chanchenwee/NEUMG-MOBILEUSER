@@ -20,6 +20,7 @@ import SearchFood from '../components/util/SearchFood.vue'
 import ResetPassword from '../components/forget-password/ResetPassword.vue'
 import ScoresDetail from '../components/coupon/ScoresDetail.vue'
 import VipCertify from '../components/vipCertify/VipCertify.vue'
+import Chat from '../components/chat/Chat.vue'
 Vue.use(VueRouter)
 
   const routes = [
@@ -45,6 +46,11 @@ Vue.use(VueRouter)
 	  path: '/login',
 	  name: 'Login',
 	  component: Login
+  },
+  {
+  	  path: '/chat',
+  	  name: 'Chat',
+  	  component: Chat
   },
   {
   	  path: '/register',

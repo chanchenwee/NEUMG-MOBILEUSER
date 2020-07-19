@@ -14,7 +14,7 @@
 								<van-tag round type="danger">{{viplevel}}</van-tag>
 								
 							</div>
-							<router-link to="./setting" class="account-management">
+							<router-link to="./chat" class="account-management">
 								<van-icon class="kefu" name="service" />
 							</router-link>
 							<router-link to="./setting" class="account-management1">
